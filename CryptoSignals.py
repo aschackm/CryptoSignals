@@ -7,8 +7,8 @@ from datetime import datetime
 
 # Config
 st.set_page_config(layout="wide")
-st.title("📈 Real-Time Crypto Buy Signal Dashboard")
-st.caption("Scanning top cryptos for bullish indicators (MACD, RSI, Bollinger) on real-time intervals")
+st.title("📈 Real-Time Crypto Buy/Sell Signal Dashboard")
+st.caption("Scanning top cryptos for bullish/bearish indicators (MACD, RSI, Bollinger) on real-time intervals")
 
 # Exchange Setup
 exchange = ccxt.coinbase()
@@ -34,11 +34,17 @@ def detect_signals(df):
     prev = df.iloc[-2]
     signals = []
     if prev['macd_diff'] < 0 and last['macd_diff'] > 0:
-        signals.append("MACD Crossover")
+        signals.append("MACD Postive Crossover")
     if last['rsi'] < 30:
         signals.append("RSI Oversold")
     if last['close'] > last['bb_upper']:
-        signals.append("Bollinger Breakout")
+        signals.append("Bollinger Positive Breakout")
+    if prev['macd_diff'] > 0 and last['macd_diff'] < 0:
+        signals.append("MACD Negative Crossover")
+    if last['rsi'] > 70:
+        signals.append("RSI Overbought")
+    if last['close'] > last['bb_upper']:
+        signals.append("Bollinger Negative Breakout")
     return signals
 
 def plot_chart(df, symbol):
