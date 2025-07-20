@@ -84,7 +84,7 @@ if scan:
             st.error(f"Error fetching {symbol}: {e}")
 
     if result_rows:
-        st.success(f"Found {len(result_rows)} buy signal(s)")
+        st.success(f"Found {len(result_rows)} buy/sell signal(s)")
         st.dataframe(pd.DataFrame(result_rows))
         for symbol in charts:
             st.plotly_chart(charts[symbol], use_container_width=True)
