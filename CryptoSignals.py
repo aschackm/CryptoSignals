@@ -54,7 +54,7 @@ def plot_chart(df, symbol):
 
 # User Inputs
 symbols = ['BTC/USDT', 'ETH/USDT', 'SOL/USDT', 'ADA/USDT', 'XRP/USDT']
-timeframe = st.selectbox("Select Timeframe", ['1m', '5m', '15m', '30m', '1h', '1d'], index=3)
+timeframe = st.selectbox("Select Timeframe", ['1m', '5m', '15m', '30m', '1h', '1d', '2d', '7d', '14d', '30d'], index=3)
 scan = st.button("🔍 Run Scan")
 
 # Signal Scanner
