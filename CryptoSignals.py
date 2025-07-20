@@ -11,7 +11,7 @@ st.title("📈 Real-Time Crypto Buy Signal Dashboard")
 st.caption("Scanning top cryptos for bullish indicators (MACD, RSI, Bollinger) on real-time intervals")
 
 # Exchange Setup
-exchange = ccxt.binance()
+exchange = ccxt.coinbase()
 
 # Functions
 def fetch_ohlcv(symbol, timeframe='30m', limit=100):
